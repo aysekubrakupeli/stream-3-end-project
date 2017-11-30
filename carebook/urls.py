@@ -17,10 +17,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from blog.views import blogposts
 from blog import urls as blog_urls
-
+from accounts import urls as accounts_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', blogposts),
     url(r'^blog/', include(blog_urls)),
+    url(r'^accounts/', include(accounts_urls)),
 ]
