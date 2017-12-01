@@ -26,6 +26,8 @@ def newpost(request):
             post.author = request.user
             post.created_date = timezone.now()
             post.save()
+            request.user.profile.ego += 10
+            request.user.profile.save()
             return redirect(viewpost, post.pk)
     else:
         form = BlogPostForm()
