@@ -16,7 +16,7 @@
                         <img src="{{ MEDIA_URL }}{{ post.image }}" style="width: 250px; height: 250px; border-radius: 50%;">
                     {% endif %}
                     <p>{{ post.content }}</p>
-                    <button class="btn btn-default" onclick="location.href='{% url 'main' %}'">Back To Blog</button>
+                    <button class="btn btn-default" onclick="location.href='{% url 'index' %}'">Back To Blog</button>
                     <button class="btn btn-default" onclick="location.href='{% url 'editpost' post.id %}'">Edit</button>
                     <p>{{ post.published_date }} | Views {{ post.views }} | <strong>Tag</strong> {{ post.tag }}</p>
                 </div>

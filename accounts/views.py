@@ -30,7 +30,7 @@ def login(request):
                     next = request.GET['next']
                     return HttpResponseRedirect(next)
                 else:
-                    return redirect(reverse('index'))
+                    return redirect(reverse('profile'))
             else:
                 user_form.add_error(None, "Your username or password are incorrect")
     else:
