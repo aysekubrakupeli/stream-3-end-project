@@ -19,19 +19,12 @@ def checkout(request):
             order = order_form.save(commit=False)
             order.date = timezone.now()
             order.save()
-
-            cart = request.session.get('cart', {})
-            total = 0
-            for id, quantity in cart.items():
-                order_line_item = OrderLineItem(
-                    order = order,
-                    quantity = quantity
-                    )
-                order_line_item.save()
+            
+            amount = request.POST['amount']
 
             try:
                 customer = stripe.Charge.create(
-                    amount= int(total * 100),
+                    amount= int(10 * 100),
                     currency="EUR",
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id'],
@@ -41,7 +34,6 @@ def checkout(request):
 
             if customer.paid:
                 messages.error(request, "You have successfully paid")
-                request.session['cart'] = {}
                 return redirect(reverse('profile'))
             else:
                 messages.error(request, "Unable to take payment")
