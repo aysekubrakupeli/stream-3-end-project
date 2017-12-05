@@ -18,6 +18,7 @@
                     <p>{{ post.content }}</p>
                     <button class="btn btn-default" onclick="location.href='{% url 'index' %}'">Back To Blog</button>
                     <button class="btn btn-default" onclick="location.href='{% url 'editpost' post.id %}'">Edit</button>
+                    <button class="btn btn-default" onclick="location.href='{% url 'checkout'%}'">Donate</button>
                     <p>{{ post.published_date }} | Views {{ post.views }} | <strong>Tag</strong> {{ post.tag }}</p>
                 </div>
             </div>

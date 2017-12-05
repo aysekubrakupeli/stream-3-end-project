@@ -14,6 +14,8 @@ def viewpost(request, id):
     post = get_object_or_404(Post, pk=id)
     comments = Comment.objects.filter(post=post)
     form = BlogCommentForm()
+    request.user.profile.ego += 1
+    request.user.profile.save()
     return render(request, "viewpost.html", {'post': post, 'comments': comments, 'form': form})
 
 
@@ -55,6 +57,8 @@ def addcomment(request, post_id):
         comment.author = request.user
         comment.post = post
         comment.save()
+        request.user.profile.ego += 3
+        request.user.profile.save()
         return redirect('viewpost', post_id)
     
     

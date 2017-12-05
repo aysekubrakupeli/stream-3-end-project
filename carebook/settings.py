@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'blog',
     'accounts',
+    'checkout',
     'django.contrib.sites',
 ]
 
@@ -134,3 +135,6 @@ AUTHENTICATION_BACKENDS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET = os.getenv('STRIPE_SECRET_KEY')
