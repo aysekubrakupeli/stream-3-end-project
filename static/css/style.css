@@ -6,4 +6,80 @@ h3 {
 .navbar {
     background-image: none;
     background-color: maroon;
+    border-color: black;
+    border-bottom: none;
 }
+
+.donation-amount {
+    width: 50px;
+    height: 38px;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    background-color: #09630c;
+}
+
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+    background-color: #09630c;
+    border-color: #09630c;
+}
+
+.like_count_blog {
+    float: right;
+    margin-left: 5px;
+}
+
+.post-likes {
+    height: 35px;
+}
+
+
+.ego-points {
+    font-size: 150px;
+   /* Chrome, Safari, Opera */
+  -webkit-animation: rainbow 1s infinite; 
+  
+  /* Internet Explorer */
+  -ms-animation: rainbow 1s infinite;
+  
+  /* Standar Syntax */
+  animation: rainbow 1s infinite; 
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+/* Internet Explorer */
+@-ms-keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+
+/* Standar Syntax */
+@keyframes rainbow{
+	20%{color: red;}
+	40%{color: yellow;}
+	60%{color: green;}
+	80%{color: blue;}
+	100%{color: orange;}	
+}
+
+
+.profile-text {
+    font-size: 50px;
+}
+
+.profile-image {
+    width: 25%;
+    height: 50%;
+    text-align: center;
+}
+ 

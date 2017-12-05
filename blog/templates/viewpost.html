@@ -16,14 +16,25 @@
                         <img src="{{ MEDIA_URL }}{{ post.image }}" style="width: 250px; height: 250px; border-radius: 50%;">
                     {% endif %}
                     <p>{{ post.content }}</p>
-                    <button class="btn btn-default" onclick="location.href='{% url 'index' %}'">Back To Blog</button>
+                    
+                    <button class="btn btn-default" onclick="location.href='{% url 'index' %}'">Back To Posts</button>
                     <button class="btn btn-default" onclick="location.href='{% url 'editpost' post.id %}'">Edit</button>
                     <button class="btn btn-default" onclick="location.href='{% url 'checkout'%}'">Donate</button>
+                    <button class="likes post-likes" id="heart-icon" data-post-id="{{ post.id }}">
+                       {% if liked %}
+                       <i class="fa fa-heart-o" style="display: line-block"></i>
+                       <i class="fa fa-heart" style="display: none"></i>
+                       {% else %}
+                       <i class="fa fa-heart" style="display: none"></i>
+                       <i class="fa fa-heart-o" style="display: line-block"></i>
+                       {% endif %}
+                       <div class="like_count_blog" id="heart-counter">  {{ post.likes }}  </div>
+                       </button>
                     <p>{{ post.published_date }} | Views {{ post.views }} | <strong>Tag</strong> {{ post.tag }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     {% include '_comment.html' %}
 {% endblock %}
 

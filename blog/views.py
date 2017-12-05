@@ -12,12 +12,14 @@ def blogposts(request):
 
 def viewpost(request, id):
     post = get_object_or_404(Post, pk=id)
+    post_id = post.pk
     comments = Comment.objects.filter(post=post)
     form = BlogCommentForm()
-    request.user.profile.ego += 1
-    request.user.profile.save()
-    return render(request, "viewpost.html", {'post': post, 'comments': comments, 'form': form})
-
+    liked = False
+    if request.session.get('has_liked_'+str(post_id), liked):
+        liked = True
+        print("liked {}_{}".format(liked, post_id))
+    return render(request, "viewpost.html", {'post': post, 'comments': comments, 'form': form, 'liked': liked})
 
 @login_required()
 def newpost(request):
@@ -61,5 +63,23 @@ def addcomment(request, post_id):
         request.user.profile.save()
         return redirect('viewpost', post_id)
     
-    
-
+def like_count_blog(request):
+    liked = False
+    if request.method == 'GET':
+        post_id = request.GET['post_id']
+        post = Post.objects.get(id=int(post_id))
+        if request.session.get('has_liked_'+post_id, liked):
+            print("unlike")
+            if post.likes > 0:
+                likes = post.likes - 1
+                try:
+                    del request.session['has_liked_'+post_id]
+                except KeyError:
+                    print("keyerror")
+        else:
+            print("like")
+            request.session['has_liked_'+post_id] = True
+            likes = post.likes + 1
+    post.likes = likes
+    post.save()
+    return HttpResponse(likes, liked)
