@@ -64,6 +64,7 @@ def addcomment(request, post_id):
         return redirect('viewpost', post_id)
     
 def like_count_blog(request):
+    print ("ok")
     liked = False
     if request.method == 'GET':
         post_id = request.GET['post_id']
