@@ -7,6 +7,5 @@ urlpatterns = [
     url(r'^posts/new/$', newpost, name="newpost"),
     url(r'^posts/(\d+)/edit/', editpost, name="editpost"),
     url(r'^posts/(\d+)/comments/add$', addcomment, name="addcomment"),
-    url(r'^posts/(?P<slug>[-_\w]*)/$', viewpost, name='post_detail'),
     url(r'^posts/?post_id=(\d+)$', like_count_blog, name='like_count_blog'),
     ]
