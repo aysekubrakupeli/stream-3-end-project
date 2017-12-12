@@ -29,9 +29,9 @@ def newpost(request):
             post = form.save(commit=False)
             post.author = request.user
             post.created_date = timezone.now()
-            post.save()
             request.user.profile.ego += 10
             request.user.profile.save()
+            post.save()
             return redirect(viewpost, post.pk)
     else:
         form = BlogPostForm()
@@ -58,29 +58,7 @@ def addcomment(request, post_id):
         comment = form.save(commit=False)
         comment.author = request.user
         comment.post = post
-        comment.save()
         request.user.profile.ego += 3
         request.user.profile.save()
+        comment.save()
         return redirect('viewpost', post_id)
-    
-def like_count_blog(request):
-    print ("ok")
-    liked = False
-    if request.method == 'GET':
-        post_id = request.GET['post_id']
-        post = Post.objects.get(id=int(post_id))
-        if request.session.get('has_liked_'+post_id, liked):
-            print("unlike")
-            if post.likes > 0:
-                likes = post.likes - 1
-                try:
-                    del request.session['has_liked_'+post_id]
-                except KeyError:
-                    print("keyerror")
-        else:
-            print("like")
-            request.session['has_liked_'+post_id] = True
-            likes = post.likes + 1
-    post.likes = likes
-    post.save()
-    return HttpResponse(likes, liked)

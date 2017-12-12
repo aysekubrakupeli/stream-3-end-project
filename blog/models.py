@@ -17,7 +17,6 @@ class Post(models.Model):
     views = models.IntegerField(default=0)    
     tag = models.CharField(max_length=30, blank=True, null=True)
     image = models.ImageField(upload_to="images", blank=True, null=True)
-    likes = models.PositiveIntegerField(default=0)
 
     @property
     def total_likes(self):
