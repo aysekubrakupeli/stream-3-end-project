@@ -21,6 +21,14 @@
                     <button class="btn btn-default" onclick="location.href='{% url 'editpost' post.id %}'">Edit</button>
                     <button class="btn btn-default" onclick="location.href='{% url 'checkout'%}'">Donate</button>
                     <p>{{ post.published_date }} | Views {{ post.views }} | <strong>Tag</strong> {{ post.tag }}</p>
+                    
+                    {% if liked %}
+                        <form method="POST" action="{% url 'unlikepost' post.id %}">{% csrf_token %}<input type="submit" value="unlike"></form>
+                    {% else %}
+                        <form method="POST" action="{% url 'likepost' post.id %}">{% csrf_token %}<input type="submit" value="like"></form>
+                    {% endif %}
+                            <label class="badge badge-warning">{{ post.liked_by.all|length }}</label>
+                            
                     </div>
                 </div>
             </div>

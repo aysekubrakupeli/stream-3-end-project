@@ -15,10 +15,7 @@ def viewpost(request, id):
     post_id = post.pk
     comments = Comment.objects.filter(post=post)
     form = BlogCommentForm()
-    liked = False
-    if request.session.get('has_liked_'+str(post_id), liked):
-        liked = True
-        print("liked {}_{}".format(liked, post_id))
+    liked = request.user in post.liked_by.all()
     return render(request, "viewpost.html", {'post': post, 'comments': comments, 'form': form, 'liked': liked})
 
 @login_required()
@@ -36,7 +33,8 @@ def newpost(request):
     else:
         form = BlogPostForm()
     return render(request, 'newpost.html', {'form': form})
-    
+
+@login_required()
 def editpost(request, id):
    post = get_object_or_404(Post, pk=id)
    if request.method == "POST":
@@ -62,3 +60,18 @@ def addcomment(request, post_id):
         request.user.profile.save()
         comment.save()
         return redirect('viewpost', post_id)
+        
+def likepost(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.liked_by.add(request.user)
+    request.user.profile.ego += 2
+    request.user.profile.save()
+    return redirect('viewpost', post_id)
+    
+def unlikepost(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.liked_by.remove(request.user)
+    request.user.profile.ego -= 1
+    request.user.profile.save()
+    return redirect('viewpost', post_id)
+    
