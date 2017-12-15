@@ -31,9 +31,21 @@ def checkout(request):
                 )
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
-
+                if order.anonymous:
+                    request.user.profile.ego -= 'amount'
+                    request.user.profile.save()
+                else: 
+                    request.user.profile.ego -= 'amount' * 2
+                    request.user.profile.save()
+                
             if customer.paid:
                 messages.error(request, "You have successfully paid")
+                if order.anonymous:
+                    request.user.profile.ego += 'amount' * 2
+                    request.user.profile.save()
+                else: 
+                    request.user.profile.ego += 'amount'
+                    request.user.profile.save()
                 return redirect(reverse('profile'))
             else:
                 messages.error(request, "Unable to take payment")
