@@ -87,3 +87,11 @@ h3 {
 .bio-text{
     font-size: 30px;
 }
+
+.blogtitle {
+    padding-top: 45px;
+}
+
+.blogtitle p {
+    font-size: 35px;
+}
