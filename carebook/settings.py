@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'accounts',
     'checkout',
     'django.contrib.sites',
+    'storages',
 ]
 
 
@@ -150,4 +151,28 @@ TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", "js",
 
 SITE_ID = 1
 
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+}
 
+AWS_STORAGE_BUCKET_NAME = 'aysekubrakupeli-carebook'
+AWS_ACCESS_KEY_ID = 'AKIAJMJFOGJB7GSQ55UA'
+AWS_SECRET_ACCESS_KEY = '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'
+
+# Tell django-storages the domain to use to refer to static files.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# Tell the staticfiles app to use S3Boto3 storage when writing the collected static files (when
+# you run `collectstatic`).
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+AWS_S3_HOST = 's3-eu-west-1.amazonaws.com'
+
+STATICFILES_LOCATION = 'static'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
