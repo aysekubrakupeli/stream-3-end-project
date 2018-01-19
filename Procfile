@@ -1,1 +1,1 @@
-web: gunicorn carebook.mysite:application
+web: gunicorn carebook.wsgi:application
