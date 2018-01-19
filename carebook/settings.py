@@ -31,7 +31,6 @@ ALLOWED_HOSTS = [
     'stream-3-project-aysekubrakupeli.c9users.io',
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,6 +46,9 @@ INSTALLED_APPS = [
     'checkout',
     'django.contrib.sites',
 ]
+
+
+LOGIN_URL = '/login/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,5 +144,7 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", "js",
+                               "tinymce", "tinymce.min.js")
 
 SITE_ID = 1
