@@ -148,3 +148,5 @@ TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", "js",
                                "tinymce", "tinymce.min.js")
 
 SITE_ID = 1
+
+
