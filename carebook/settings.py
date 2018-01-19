@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'stream-3-project-aysekubrakupeli.c9users.io',
+    'https://aysekubrakupeli-carebook.herokuapp.com/',
 ]
 
 # Application definition
