@@ -156,9 +156,9 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=94608000',
 }
 
-AWS_STORAGE_BUCKET_NAME = 'aysekubrakupeli-carebook'
-AWS_ACCESS_KEY_ID = 'AKIAJMJFOGJB7GSQ55UA'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = os.environ.get('BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 # Tell django-storages the domain to use to refer to static files.
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
