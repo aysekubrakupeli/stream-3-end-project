@@ -14,3 +14,4 @@ django-paypal==0.3.6
 stripe
 git+https://github.com/aysekubrakupeli/reusable-blog-app.git
 gunicorn==19.4
+setuptools==0.7.3
