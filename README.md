@@ -99,18 +99,3 @@ To run the tests, in your terminal navigate to the folder with your project in, 
     1. Tests that the UserRegistrationForm validates properly when the correct information is supplied
     2. Tests that the form fails when one of the passwords has not been entered
     3. Tests that the form fails when the passwords to not match
-
-* `$ python manage.py test cart` - This will PASS
-    tests.py in the Cart App:
-    1. Tests that the url for '/cart/' resolves to the 'cart' function in views.py
-
-* `$ python manage.py test contact` - These will both PASS
-    tests.py in the Contact App:
-    1. Tests that the url for '/contact/' resolves to the 'contact' function in views.py
-    2. Tests that the view returns the correct status code 
-
-
-
-
-
-
