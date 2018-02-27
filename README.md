@@ -1,7 +1,11 @@
 # Carebook
 **Ecommerce & Blog Web Application with User Authentication and Stripe Payments**
 
-This is the final Bootcamp Stream 3 project. It is a **fictional** social media site built with Python's *Django* framework with ecommerce functionality (Stripe) - no template was used.
+This is the final Bootcamp Stream 3 project. It is a social media site built with Python's *Django* framework with ecommerce functionality (Stripe) - no template was used.
+What you can do on the site is create your own account and share posts. What makes this site different however are the "EgoPoints". These egopoints are aquired by liking, donating, creating posts, and creating a new account. 
+By donating money you can earn ego points, the amount donated decides the amount of points you get. There is a twist, if the bank transfer isn't accepted you will lose points. Because you have pretended to want to donate. 
+If you want to give it a try you can use one of the existing users: Username: freemanguy@test.com Password: Test12345. Or you can create your own account and start collecting your own points! 
+One soon upcoming feature will be a leaderboard so we can see who is leading with the points. You can view the points on the individuals profile page. 
 
 ## Live Demo
 
